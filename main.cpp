@@ -4,7 +4,6 @@
 #include <queue>
 #include <regex>
 
-
 int numbers[3];
 std::string one_str_from_file;
 std::regex pattern_str("[0-9]+ [0-9]+ [1-9][0-9]+");
@@ -44,7 +43,7 @@ void from_right_to_left(){
 
 int numb_define(const std::string& dir){
     std::ifstream file;
-    file.open("input.txt");
+    file.open(dir);
     if(file.is_open()){
         while(getline(file, one_str_from_file)) {       //считывание из файла
             if (std::regex_match(one_str_from_file, pattern_str)) {     // сравнение с регулярным выражением
@@ -59,10 +58,7 @@ int numb_define(const std::string& dir){
             memset(numbers, 0, sizeof(int) * 3);    // обнуление массива
         }
     }
-    else{
-        std::cout << "pizdes" ;
-        return 0;
-    }
+    else return 0;
     return 1;
 }
 
